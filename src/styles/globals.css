@@ -2,6 +2,7 @@
 
 @theme {
     --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-montserrat: 'Montserrat', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --color-primary: #f67280;
     --color-primary-content: #101828;
     --color-complementary: #355c7d;
@@ -37,7 +38,13 @@
 }
 
 @layer components {
+    .font-montserrat {
+        font-family: var(--font-montserrat);
+    }
+
     .markdown {
+        font-family: var(--font-montserrat);
+        
         > * {
             @apply my-6;
         }
