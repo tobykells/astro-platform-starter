@@ -1,0 +1,1 @@
+{"bundles":[{"asset":"47b5ac86ba47f594e9203e1913e301843dab36a36cbdb8525c323247db764a79.eszip","format":"eszip2"}],"routes":[{"function":"rewrite","pattern":"^/edge/?$","excluded_patterns":[],"path":"/edge"}],"post_cache_routes":[],"bundler_version":"14.5.6","layers":[],"import_map":"netlify:import-map","function_config":{}}
