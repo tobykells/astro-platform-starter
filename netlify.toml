@@ -3,8 +3,8 @@ plugins = []
 redirects = []
 
 [build]
-edge_functions = "/opt/build/repo/netlify/edge-functions"
-publish = "/opt/build/repo/dist"
+edge_functions = "netlify/edge-functions"
+publish = "dist"
 publishOrigin = "ui"
 commandOrigin = "ui"
 command = "npm run build"

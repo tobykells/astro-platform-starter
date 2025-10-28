@@ -2,34 +2,79 @@
 import '../../src/styles/globals.css';
 import '@fontsource-variable/inter/wght.css';
 import interWoff2 from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { translations } from '../utils/translations';
 
 interface Props {
     title: string;
 }
 
 const { title } = Astro.props;
+const currentLang = Astro.cookies.get('language')?.value || 'en';
+const t = translations[currentLang as keyof typeof translations] || translations.en;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={currentLang}>
     <head>
         <meta charset="UTF-8" />
         <title>{title}</title>
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="preload" as="font" type="font/woff2" href={interWoff2} crossorigin />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <script>
+            function setLanguage(lang) {
+                document.cookie = `language=${lang}; path=/; max-age=31536000; SameSite=Lax`;
+                window.location.reload();
+            }
+        </script>
     </head>
-    <body class="antialiased text-white bg-complementary">
-        <div class="flex flex-col min-h-screen px-6 bg-noise sm:px-12">
-            <div class="flex flex-col w-full max-w-5xl mx-auto grow">
-                <Header />
-                <main class="grow"><slot /></main>
+    <body class="antialiased text-text-custom bg-complementary">
+        <div class="flex flex-col min-h-screen bg-noise">
+            <header class="w-full" style="background-color: #e3f3eb;">
+                <nav class="flex flex-wrap items-center justify-between px-4 py-2 max-w-5xl mx-auto sm:px-12 gap-4">
+                    <a href="/" class="flex-shrink-0">
+                        <img src="/images/smalllogo.png" alt="Logo" class="h-[86px] w-auto sm:h-[97px]" />
+                    </a>
+                    <div class="flex items-center gap-2 sm:gap-4">
+                        <ul class="flex flex-wrap gap-3 sm:gap-6">
+                            <li>
+                                <a href="/client" class="font-bold text-base sm:text-lg hover:opacity-80 transition-opacity data-[lang-text]:hidden sm:data-[lang-text]:inline" style="font-family: 'Gowun Batang', serif; color: #221d1e;" data-lang-text>
+                                    {t.clients}
+                                </a>
+                                <a href="/client" class="font-bold text-base sm:text-lg hover:opacity-80 transition-opacity sm:hidden" style="font-family: 'Gowun Batang', serif; color: #221d1e;">
+                                    {t.clients}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/expert" class="font-bold text-base sm:text-lg hover:opacity-80 transition-opacity" style="font-family: 'Gowun Batang', serif; color: #221d1e;">
+                                    {t.experts}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/contact" class="font-bold text-base sm:text-lg hover:opacity-80 transition-opacity" style="font-family: 'Gowun Batang', serif; color: #221d1e;">
+                                    {t.contact}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/login" class="font-bold text-base sm:text-lg hover:opacity-80 transition-opacity" style="font-family: 'Gowun Batang', serif; color: #221d1e;">
+                                    {t.login}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <div class="w-full" style="height: 13.5px; background-color: #6d2323;"></div>
+            <div class="w-full" style="height: 4.5px; background-color: #912a2a;"></div>
+            <div class="w-full" style="height: 1px; background-color: #a06372;"></div>
+            <div class="flex flex-col w-full max-w-5xl mx-auto grow px-4 sm:px-12">
+                <main class="grow py-8"><slot /></main>
                 <Footer />
             </div>
         </div>
