@@ -1,31 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { translations } from '../utils/translations';
+
+const currentLang = Astro.cookies.get('language')?.value || 'en';
+const t = translations[currentLang as keyof typeof translations] || translations.en;
 ---
 
-<Layout title="K-Insights - Business Intelligence Consultancy">
-    <div class="max-w-4xl mx-auto">
-        <h1 class="mb-10 text-4xl font-bold text-center">K-Insights</h1>
+<Layout title="K-Insights - Expert Network">
+    <div class="max-w-4xl">
+        <h1 class="mb-8" style="font-family: 'Gowun Batang', serif; color: #221d1e;">{t.welcomeTitle}</h1>
         
-        <div class="bg-gray-800 p-8 rounded-lg shadow-lg mb-10">
-            <h2 class="text-2xl font-semibold mb-6 text-center">Who we are</h2>
+        <div class="bg-white border rounded-lg shadow-lg p-6 sm:p-8 mb-8" style="border-color: #e3f3eb;">
+            <h2 class="text-xl sm:text-2xl font-semibold mb-6" style="font-family: 'Gowun Batang', serif; color: #221d1e;">{t.whoWeAre}</h2>
             
-            <p class="text-lg mb-6 leading-relaxed font-montserrat">
-                An Astro website can go way beyond static pages - on the right platform.
-            </p>
+            <div class="text-base sm:text-xl leading-relaxed font-roboto">
+                <p class="mb-6 text-gray-800 leading-relaxed">{t.whoWeAreText1}</p>
+                
+                <p class="mb-6 text-gray-800 leading-relaxed">{t.whoWeAreText2}</p>
+                
+                <h3 class="text-xl sm:text-2xl font-semibold mb-4" style="font-family: 'Gowun Batang', serif; color: #221d1e;">{t.how}</h3>
+                
+                <p class="mb-6 text-gray-800 leading-relaxed">{t.howText}</p>
+            </div>
             
-            <p class="text-lg mb-8 leading-relaxed font-montserrat">
-                Frequently reserved for consultancies and private equities, it is our mission to democratise business insights; giving companies of all types direct access to market intelligence.
-            </p>
+            <h2 class="text-xl sm:text-2xl font-semibold mb-6 mt-8" style="font-family: 'Gowun Batang', serif; color: #221d1e;">{t.getInTouch}</h2>
             
-            <h2 class="text-2xl font-semibold mb-6 text-center">How?</h2>
+            <p class="mb-8 text-gray-800 leading-relaxed font-roboto">{t.getInTouchText}</p>
             
-            <p class="text-lg mb-8 leading-relaxed font-montserrat">
-                We arrange consultations for you to connect directly with industry leaders, potential suppliers, regulators, or anyone else relevant to your strategic goals; strictly on a no commitment needed, pay as you go basis.
-            </p>
-            
-            <div class="text-center">
-                <a href="#contact" class="btn btn-lg bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg inline-block transition-colors">
-                    Get in touch
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                <a href="/client" class="inline-flex items-center justify-center px-6 py-3 font-semibold text-white rounded-lg transition-colors" style="background-color: #221d1e; font-family: 'Gowun Batang', serif;"
+                   onmouseover="this.style.backgroundColor='#191619'"
+                   onmouseout="this.style.backgroundColor='#221d1e'">
+                    {t.startProject}
+                </a>
+                <a href="/expert" class="inline-flex items-center justify-center px-6 py-3 font-semibold border-2 rounded-lg transition-colors" style="color: #221d1e; border-color: #221d1e; font-family: 'Gowun Batang', serif;"
+                   onmouseover="this.style.backgroundColor='#221d1e'; this.style.color='white'"
+                   onmouseout="this.style.backgroundColor='transparent'; this.style.color='#221d1e'">
+                    {t.joinNetwork}
                 </a>
             </div>
         </div>

@@ -3,13 +3,17 @@
 @theme {
     --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --font-montserrat: 'Montserrat', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-roboto: 'Roboto', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --color-primary: #f67280;
     --color-primary-content: #101828;
     --color-complementary: #355c7d;
+    --color-banner-bg: #e3f3eb;
+    --color-banner-border: #a06372;
+    --color-text-custom: #221d1e;
     --background-image-noise: linear-gradient(
             to bottom,
-            color-mix(in oklab, var(--color-gray-950) 0%, transparent),
-            color-mix(in oklab, var(--color-gray-950) 100%, transparent)
+            #e3f3eb,
+            #e3fff2
         ),
         url('/images/noise.png');
 }
@@ -40,6 +44,13 @@
 @layer components {
     .font-montserrat {
         font-family: var(--font-montserrat);
+    }
+
+    .font-roboto {
+        font-family: var(--font-roboto);
+        font-weight: 300;
+        font-optical-sizing: auto;
+        font-style: normal;
     }
 
     .markdown {
